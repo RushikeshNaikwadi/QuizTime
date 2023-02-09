@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './QuestionWidget.dart';
+
 void main () {
   runApp(QuizTime());
 }
@@ -32,7 +34,9 @@ class _QuizTimeState extends State<QuizTime> {
           ),
           body: Column(
             children: [
-              Text(mcqList[mcqIndex]),
+              QuestionClass(
+                  questionText: mcqList[mcqIndex]
+              ),
               ElevatedButton(
                   onPressed: optionSelected,
                   child: Text('Option 1'),
