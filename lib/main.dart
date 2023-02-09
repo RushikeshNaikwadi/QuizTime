@@ -4,15 +4,23 @@ void main () {
   runApp(QuizTime());
 }
 
-class QuizTime extends StatelessWidget {
+class QuizTime extends StatefulWidget {
+  @override
+  State<QuizTime> createState() => _QuizTimeState();
+}
+
+class _QuizTimeState extends State<QuizTime> {
   int mcqIndex = 0;
+
   List<String> mcqList = [
     "What is National Animal of India ?",
     "What is National Bird of India ?",
   ];
 
   void optionSelected () {
-    print('Option Selected');
+    setState(() {
+      mcqIndex++;
+    });
   }
 
   Widget build (BuildContext context) {
