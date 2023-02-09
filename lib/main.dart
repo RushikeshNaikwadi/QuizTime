@@ -20,6 +20,7 @@ class _QuizTimeState extends State<QuizTime> {
   void optionSelected () {
     setState(() {
       mcqIndex++;
+      mcqIndex %= mcqList.length;
     });
   }
 
