@@ -1,6 +1,6 @@
 class DataClass {
   final String questionText;
-  final List <String> optionsList;
+  final List <List<dynamic>> optionsList;
 
   DataClass({
     this.questionText,

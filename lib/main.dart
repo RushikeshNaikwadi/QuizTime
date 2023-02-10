@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-import './QuestionWidget.dart';
-import './OptionWidget.dart';
-import './DataClass.dart';
+import 'McqList/mcqListData.dart';
+import 'package:quiz_time/McqWidget/McqPageWidget.dart';
+import 'ResultPage/ResultPageWidget.dart';
 
-void main () {
-  runApp(QuizTime());
-}
+void main () => runApp(QuizTime());
 
 class QuizTime extends StatefulWidget {
   @override
@@ -14,27 +12,27 @@ class QuizTime extends StatefulWidget {
 }
 
 class _QuizTimeState extends State<QuizTime> {
+  bool _isQuizDone = false;
+  int _score = 0;
+  
   int _mcqIndex = 0;
 
-  List <DataClass> mcqData = [
-    DataClass(
-      questionText: 'Which of the following is the smallest unit of data in a computer?',
-      optionsList: ['Bit', 'KB', 'Nibble', 'Byte']
-    ),
-    DataClass(
-      questionText: 'What is information about data called?',
-      optionsList: ['Hyper data', 'Tera data', 'Meta data', 'Relations']
-    ),
-    DataClass(
-      questionText: 'Which command is used to remove a relation from an SQL?',
-      optionsList: ['Truncate' ,'Drop table', 'Delete', 'Remove']
-    )
-  ];
-
-  void optionSelected () {
+  void optionSelected (int score) {
     setState(() {
       _mcqIndex++;
-      _mcqIndex %= mcqData.length;
+      _score += score;
+      print(_score);
+      if (_mcqIndex >= mcqData.length) {
+        _isQuizDone = true;
+      }
+    });
+  }
+
+  void quizResettter () {
+    setState(() {
+      _isQuizDone = false;
+      _mcqIndex = 0;
+      _score = 0;
     });
   }
 
@@ -44,19 +42,17 @@ class _QuizTimeState extends State<QuizTime> {
           appBar: AppBar(
             title: Text('QuizTime'),
           ),
-          body: Column(
-            children: [
-              QuestionClass(
-                  questionText: mcqData[_mcqIndex].questionText
-              ),
-              ...mcqData[_mcqIndex].optionsList.map((optionText) {
-                return OptionClass(
-                  optionText: optionText,
-                  optionSelector: optionSelected,
-                );
-              }).toList()
-            ],
-          )
+          body: _isQuizDone ?
+          ResultPageClass(
+            score: _score,
+            totalScore: mcqData.length,
+            resetQuiz: quizResettter,
+          ) :
+          MCQPageClass(
+            questionText: mcqData[_mcqIndex].questionText,
+            optionList: mcqData[_mcqIndex].optionsList,
+            optionSelector: optionSelected,
+          ),
         )
       );
   }
