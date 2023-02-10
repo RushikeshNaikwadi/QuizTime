@@ -8,11 +8,16 @@ class QuestionClass extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+      margin: EdgeInsets.fromLTRB(7.5, 15, 7.5, 10),
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      decoration: BoxDecoration(
+        color: Colors.redAccent,
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Text(
           questionText,
           style: TextStyle(
-            fontSize: 23,
+            fontSize: 25,
           ),
           textAlign: TextAlign.left,
       ),

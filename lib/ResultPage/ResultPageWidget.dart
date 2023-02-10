@@ -14,6 +14,7 @@ class ResultPageClass extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[600],
       body: Container(
         width: double.infinity,
         child: Center(
@@ -29,6 +30,7 @@ class ResultPageClass extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: resetQuiz,
         label: Text('Reset'),
+        backgroundColor: Colors.grey[800],
       ),
     );
   }

@@ -41,6 +41,7 @@ class _QuizTimeState extends State<QuizTime> {
         home: Scaffold(
           appBar: AppBar(
             title: Text('QuizTime'),
+            backgroundColor: Colors.grey[800],
           ),
           body: _isQuizDone ?
           ResultPageClass(
@@ -53,6 +54,7 @@ class _QuizTimeState extends State<QuizTime> {
             optionList: mcqData[_mcqIndex].optionsList,
             optionSelector: optionSelected,
           ),
+          backgroundColor: Colors.grey[600],
         )
       );
   }
