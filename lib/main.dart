@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import './QuestionWidget.dart';
+import './OptionWidget.dart';
+import './DataClass.dart';
 
 void main () {
   runApp(QuizTime());
@@ -12,17 +14,27 @@ class QuizTime extends StatefulWidget {
 }
 
 class _QuizTimeState extends State<QuizTime> {
-  int mcqIndex = 0;
+  int _mcqIndex = 0;
 
-  List<String> mcqList = [
-    "What is National Animal of India ?",
-    "What is National Bird of India ?",
+  List <DataClass> mcqData = [
+    DataClass(
+      questionText: 'Which of the following is the smallest unit of data in a computer?',
+      optionsList: ['Bit', 'KB', 'Nibble', 'Byte']
+    ),
+    DataClass(
+      questionText: 'What is information about data called?',
+      optionsList: ['Hyper data', 'Tera data', 'Meta data', 'Relations']
+    ),
+    DataClass(
+      questionText: 'Which command is used to remove a relation from an SQL?',
+      optionsList: ['Truncate' ,'Drop table', 'Delete', 'Remove']
+    )
   ];
 
   void optionSelected () {
     setState(() {
-      mcqIndex++;
-      mcqIndex %= mcqList.length;
+      _mcqIndex++;
+      _mcqIndex %= mcqData.length;
     });
   }
 
@@ -35,24 +47,14 @@ class _QuizTimeState extends State<QuizTime> {
           body: Column(
             children: [
               QuestionClass(
-                  questionText: mcqList[mcqIndex]
+                  questionText: mcqData[_mcqIndex].questionText
               ),
-              ElevatedButton(
-                  onPressed: optionSelected,
-                  child: Text('Option 1'),
-              ),
-              ElevatedButton(
-                onPressed: optionSelected,
-                child: Text('Option 2'),
-              ),
-              ElevatedButton(
-                onPressed: optionSelected,
-                child: Text('Option 3'),
-              ),
-              ElevatedButton(
-                onPressed: optionSelected,
-                child: Text('Option 4'),
-              ),
+              ...mcqData[_mcqIndex].optionsList.map((optionText) {
+                return OptionClass(
+                  optionText: optionText,
+                  optionSelector: optionSelected,
+                );
+              }).toList()
             ],
           )
         )
