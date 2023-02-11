@@ -4,6 +4,7 @@ class OptionClass extends StatelessWidget {
   final Function optionSelector;
   final int index;
   final List<dynamic> optionTextPlusScore;
+
   OptionClass({
     @required this.optionSelector,
     @required this.index,
@@ -15,18 +16,19 @@ class OptionClass extends StatelessWidget {
     return Container(
       width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
       ),
       child: ElevatedButton(
         onPressed: () => optionSelector(optionTextPlusScore[1]),
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.green[400]),
+          backgroundColor: MaterialStateProperty.all(Colors.green[500]),
         ),
         child: Text(
-            '$index)  ${optionTextPlusScore[0]}',
+            '($index)  ${optionTextPlusScore[0]}',
           style: TextStyle(
-            fontSize: 17
+            fontSize: 20
           ),
         ),
       ),
