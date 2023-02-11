@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'McqList/mcqListData.dart';
+import 'Data/mcqListData.dart';
 import 'package:quiz_time/McqWidget/McqPageWidget.dart';
 import 'ResultPage/ResultPageWidget.dart';
 
@@ -14,7 +14,6 @@ class QuizTime extends StatefulWidget {
 class _QuizTimeState extends State<QuizTime> {
   bool _isQuizDone = false;
   int _score = 0;
-  
   int _mcqIndex = 0;
 
   void optionSelected (int score) {

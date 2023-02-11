@@ -9,9 +9,9 @@ class MCQPageClass extends StatelessWidget {
   final Function optionSelector;
 
   MCQPageClass({
-    this.questionText,
-    this.optionList,
-    this.optionSelector
+    @required this.questionText,
+    @required this.optionList,
+    @required this.optionSelector
   });
 
   @override
@@ -23,6 +23,7 @@ class MCQPageClass extends StatelessWidget {
         ),
         ...optionList.map((optionTextPlusScore) {
           return OptionClass(
+            index: optionList.indexOf(optionTextPlusScore) + 1,
             optionTextPlusScore: optionTextPlusScore,
             optionSelector: optionSelector,
           );

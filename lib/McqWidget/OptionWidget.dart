@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 class OptionClass extends StatelessWidget {
   final Function optionSelector;
+  final int index;
   final List<dynamic> optionTextPlusScore;
-  OptionClass({@required this.optionSelector, @required this.optionTextPlusScore});
+  OptionClass({
+    @required this.optionSelector,
+    @required this.index,
+    @required this.optionTextPlusScore
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +24,9 @@ class OptionClass extends StatelessWidget {
           backgroundColor: MaterialStateProperty.all(Colors.green[400]),
         ),
         child: Text(
-            optionTextPlusScore[0],
+            '$index)  ${optionTextPlusScore[0]}',
           style: TextStyle(
-
+            fontSize: 17
           ),
         ),
       ),
