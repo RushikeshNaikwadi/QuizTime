@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ResultPageClass extends StatelessWidget {
-  final int score;
-  final int totalScore;
+  final double score;
+  final double totalScore;
   final Function resetQuiz;
 
   ResultPageClass({
@@ -19,9 +19,10 @@ class ResultPageClass extends StatelessWidget {
         width: double.infinity,
         child: Center(
           child: Text(
-            'Result : ${score.toString()} / $totalScore',
+            'Result  :  ${score.toString()} / $totalScore',
             style: TextStyle(
-                fontSize: 30
+                fontSize: 30,
+              color: Colors.cyanAccent
             ),
             textAlign: TextAlign.center,
           ),

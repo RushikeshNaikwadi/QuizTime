@@ -16,19 +16,25 @@ class MCQPageClass extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        QuestionClass(
-            questionText: questionText
-        ),
-        ...optionList.map((optionTextPlusScore) {
-          return OptionClass(
-            index: optionList.indexOf(optionTextPlusScore) + 1,
-            optionTextPlusScore: optionTextPlusScore,
-            optionSelector: optionSelector,
-          );
-        }).toList()
-      ],
+    return Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(vertical: 15),
+        color: Colors.grey[700],
+        child: Column(
+          children: [
+            QuestionClass(
+                questionText: questionText
+            ),
+            Text(''),
+            ...optionList.map((optionTextPlusScore) {
+              return OptionClass(
+                index: optionList.indexOf(optionTextPlusScore) + 1,
+                optionTextPlusScore: optionTextPlusScore,
+                optionSelector: optionSelector,
+              );
+            }).toList()
+          ],
+        )
     );
   }
 }

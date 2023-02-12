@@ -15,7 +15,7 @@ class OptionClass extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 10),
+      margin: EdgeInsets.symmetric(vertical: 1, horizontal: 10),
       padding: EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -26,7 +26,7 @@ class OptionClass extends StatelessWidget {
           backgroundColor: MaterialStateProperty.all(Colors.green[500]),
         ),
         child: Text(
-            '($index)  ${optionTextPlusScore[0]}',
+            '${optionTextPlusScore[0]}',
           style: TextStyle(
             fontSize: 20
           ),

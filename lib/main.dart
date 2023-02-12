@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_time/IntroPageWidget.dart';
 
 import 'Data/mcqListData.dart';
 import 'package:quiz_time/McqWidget/McqPageWidget.dart';
@@ -6,32 +7,47 @@ import 'ResultPage/ResultPageWidget.dart';
 
 void main () => runApp(QuizTime());
 
+enum Location {
+  IntroPage,
+  QuizStart,
+  QuizDone
+}
+
 class QuizTime extends StatefulWidget {
   @override
   State<QuizTime> createState() => _QuizTimeState();
 }
 
 class _QuizTimeState extends State<QuizTime> {
-  bool _isQuizDone = false;
-  int _score = 0;
+  Location current = Location.IntroPage;
+
+  double _score = 0.0, _totalScore = 0.0;
   int _mcqIndex = 0;
 
-  void optionSelected (int score) {
+  void startQuiz () {
+    setState(() {
+      current = Location.QuizStart;
+    });
+  }
+
+  void optionSelected (double score) {
     setState(() {
       _mcqIndex++;
       _score += score;
+      _totalScore += 1.0;
       print(_score);
       if (_mcqIndex >= mcqData.length) {
-        _isQuizDone = true;
+        current = Location.QuizDone;
       }
     });
   }
 
-  void quizResettter () {
+  void quizReset () {
     setState(() {
-      _isQuizDone = false;
       _mcqIndex = 0;
       _score = 0;
+      _totalScore = 0;
+      current = Location.IntroPage;
     });
   }
 
@@ -39,21 +55,30 @@ class _QuizTimeState extends State<QuizTime> {
       return MaterialApp(
         home: Scaffold(
           appBar: AppBar(
-            title: Text('QuizTime'),
+            title: Text(
+                'QuizTime',
+              style: TextStyle(
+                color: Colors.limeAccent
+              ),
+            ),
             backgroundColor: Colors.grey[800],
           ),
-          body: _isQuizDone ?
-          ResultPageClass(
-            score: _score,
-            totalScore: mcqData.length,
-            resetQuiz: quizResettter,
-          ) :
-          MCQPageClass(
-            questionText: mcqData[_mcqIndex].questionText,
-            optionList: mcqData[_mcqIndex].optionsList,
-            optionSelector: optionSelected,
-          ),
-          backgroundColor: Colors.grey[600],
+          body: current == Location.IntroPage ?
+              IntroPageClass(
+                quizStarter: startQuiz,
+              ) :
+              (current == Location.QuizStart ?
+                  MCQPageClass(
+                    questionText: mcqData[_mcqIndex].questionText,
+                    optionList: mcqData[_mcqIndex].optionsList,
+                    optionSelector: optionSelected,
+                  ) :
+                  ResultPageClass(
+                    score: _score,
+                    totalScore: _totalScore,
+                    resetQuiz: quizReset,
+                  )
+              )
         )
       );
   }
