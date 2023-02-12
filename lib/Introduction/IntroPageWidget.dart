@@ -10,7 +10,7 @@ class IntroPageClass extends StatelessWidget {
   final List<String> rules = [
     '1) Quiz is based on CS Fundamentals which include DSA, OS, DBMS, CNS and OOP.',
     '',
-    '2) The Quiz contains 10 question for each correct answer has 1 mark and for each incorrect answer 0.5 mark will be deducted.',
+    '2) The Quiz contains 10 question, Each correct answer has 1 mark and for each incorrect answer 0.5 mark will be deducted.',
     '',
     '3) You can attempt Quiz infinite amount of times.',
     '',
@@ -23,7 +23,7 @@ class IntroPageClass extends StatelessWidget {
       body: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(vertical: 40, horizontal: 15),
-        color: Colors.grey[700],
+        color: Colors.grey[800],
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -31,10 +31,9 @@ class IntroPageClass extends StatelessWidget {
                 'Rules',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
-                decoration: TextDecoration.underline,
                 fontSize: 40,
-                color: Colors.purpleAccent
+                color: Colors.limeAccent,
+                letterSpacing: 2.5
               ),
             ),
             Text(''),
@@ -43,18 +42,18 @@ class IntroPageClass extends StatelessWidget {
                   rule,
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.white60
+                  color: Colors.purpleAccent[100]
 
                 ),
               );
             }),
-            SizedBox(height: 75),
+            Text('\n'),
             Text(
               'BEST of LUCK',
               style: TextStyle(
-                fontSize: 40,
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
-                color: Colors.tealAccent
+                color: Colors.limeAccent
               ),
             )
           ],
@@ -62,8 +61,15 @@ class IntroPageClass extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: quizStarter,
-          label: Text('Start Quiz'),
-          backgroundColor: Colors.red,
+          label: Text(
+              'Start Quiz',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: Colors.limeAccent,
+              ),
+          ),
+          backgroundColor: Colors.grey[900]
       ),
     );
   }

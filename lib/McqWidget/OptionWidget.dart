@@ -16,7 +16,7 @@ class OptionClass extends StatelessWidget {
     return Container(
       width: double.infinity,
       margin: EdgeInsets.symmetric(vertical: 1, horizontal: 10),
-      padding: EdgeInsets.symmetric(horizontal: 5),
+      padding: EdgeInsets.symmetric(vertical: 1, horizontal: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
       ),

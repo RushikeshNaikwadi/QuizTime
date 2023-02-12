@@ -61,7 +61,7 @@ class _QuizTimeState extends State<QuizTime> {
                 color: Colors.limeAccent
               ),
             ),
-            backgroundColor: Colors.grey[800],
+            backgroundColor: Colors.grey[900],
           ),
           body: current == Location.IntroPage ?
               IntroPageClass(

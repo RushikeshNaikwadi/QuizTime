@@ -18,14 +18,14 @@ class MCQPageClass extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: double.infinity,
-        padding: EdgeInsets.symmetric(vertical: 15),
+        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 15),
         color: Colors.grey[700],
         child: Column(
           children: [
             QuestionClass(
                 questionText: questionText
             ),
-            Text(''),
+            SizedBox(height: 5),
             ...optionList.map((optionTextPlusScore) {
               return OptionClass(
                 index: optionList.indexOf(optionTextPlusScore) + 1,

@@ -14,7 +14,7 @@ class ResultPageClass extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[600],
+      backgroundColor: Colors.grey[800],
       body: Container(
         width: double.infinity,
         child: Center(
@@ -22,7 +22,7 @@ class ResultPageClass extends StatelessWidget {
             'Result  :  ${score.toString()} / $totalScore',
             style: TextStyle(
                 fontSize: 30,
-              color: Colors.cyanAccent
+              color: Colors.limeAccent
             ),
             textAlign: TextAlign.center,
           ),
@@ -30,8 +30,15 @@ class ResultPageClass extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: resetQuiz,
-        label: Text('Reset'),
-        backgroundColor: Colors.grey[800],
+        label: Text(
+            'Reset',
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+            color: Colors.limeAccent,
+          ),
+        ),
+        backgroundColor: Colors.grey[900],
       ),
     );
   }
