@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_time/IntroPageWidget.dart';
+import 'package:quiz_time/Introduction/IntroPageWidget.dart';
 
 import 'Data/mcqListData.dart';
 import 'package:quiz_time/McqWidget/McqPageWidget.dart';

@@ -34,7 +34,7 @@ class IntroPageClass extends StatelessWidget {
                 fontStyle: FontStyle.italic,
                 decoration: TextDecoration.underline,
                 fontSize: 40,
-                color: Colors.lightBlueAccent
+                color: Colors.purpleAccent
               ),
             ),
             Text(''),
